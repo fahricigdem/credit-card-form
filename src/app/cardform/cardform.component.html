@@ -1,10 +1,16 @@
 <form [formGroup]="cardForm">
     <input formControlName="name"/>
-    <div *ngIf="cardForm.get('name')?.errors?.['required'] == true">zorunlu alan</div>
-    <div *ngIf="cardForm.get('name')?.errors?.['minlength'] != null">
-        actuel: {{cardForm.get('name')?.errors?.['minlength'].actualLength}} - 
-        min-required: {{cardForm.get('name')?.errors?.['minlength'].requiredLength}}
-    </div>
+    <ng-container *ngIf="
+        cardForm.get('name')?.touched &&
+        cardForm.get('name')?.dirty &&
+        cardForm.get('name')?.errors
+    ">
+        <div *ngIf="cardForm.get('name')?.errors?.['required'] == true">zorunlu alan</div>
+        <div *ngIf="cardForm.get('name')?.errors?.['minlength'] != null">
+            actuel: {{cardForm.get('name')?.errors?.['minlength'].actualLength}} - 
+            min-required: {{cardForm.get('name')?.errors?.['minlength'].requiredLength}}
+        </div>
+    </ng-container>
 </form>
 
 <div class="mt-4">Form Content</div>
