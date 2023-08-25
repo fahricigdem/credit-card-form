@@ -19,4 +19,8 @@ export class CardformComponent implements OnInit{
   ngOnInit(){
     console.log(this.cardForm);
   }
+
+
+  get name() { return this.cardForm.get('name'); }
+
 }
