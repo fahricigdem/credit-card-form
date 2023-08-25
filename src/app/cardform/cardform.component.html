@@ -1,9 +1,18 @@
 <form [formGroup]="cardForm">
     <input formControlName="name"/>
-
+    <div *ngIf="cardForm.get('name')?.errors?.['required'] == true">zorunlu alan</div>
+    <div *ngIf="cardForm.get('name')?.errors?.['minlength'] != null">
+        actuel: {{cardForm.get('name')?.errors?.['minlength'].actualLength}} - 
+        min-required: {{cardForm.get('name')?.errors?.['minlength'].requiredLength}}
+    </div>
 </form>
 
 <div class="mt-4">Form Content</div>
 <p>cardForm.value: {{cardForm.value | json}}</p>
 <p>cardForm.value.name: {{cardForm.value.name}}</p>
 <p>cardForm.valid: {{cardForm.valid | json}}</p>  
+<p>errors: {{cardForm.get('name')?.errors | json}}</p>  
+<p>errors - required: {{cardForm.get('name')?.errors?.['required'] | json}}</p>  
+<p>errors - minlength: {{cardForm.get('name')?.errors?.['minlength'] | json}}</p>  
+<p>errors - minlength - requiredLength: {{cardForm.get('name')?.errors?.['minlength'].requiredLength}}</p>  
+<p>errors - minlength - actualLength: {{cardForm.get('name')?.errors?.['minlength'].actualLength}}</p>  
