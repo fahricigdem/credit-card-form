@@ -24,5 +24,10 @@ export class InputComponent implements OnInit {
   isMaxLength(){
     return this.control?.errors?.['maxlength'] != null && this.control?.touched;
   }
-
+  isRegex(){
+    return this.control?.errors?.['pattern'] != null && this.control?.touched;
+  }
+setValue(){
+  this.control.setValue("ddddd")
+}
 }

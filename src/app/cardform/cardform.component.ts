@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms'
+import { DateFormControl } from '../date-form-control';
 
 @Component({
   selector: 'app-cardform',
@@ -20,10 +21,11 @@ export class CardformComponent implements OnInit{
         Validators.minLength(16),
         Validators.maxLength(16),
       ]),
-      lastDate:new FormControl(null, [
+      lastDate:new DateFormControl(null, [
         Validators.required,
-        Validators.minLength(4),
-        Validators.maxLength(4),
+        // Validators.minLength(4), 
+        // Validators.maxLength(4),
+        Validators.pattern(/^(0[1-9]|1[0-2])\/\d{2}$/),
       ]),
       securityNumber:new FormControl(null, [
         Validators.required,

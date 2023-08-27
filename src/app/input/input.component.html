@@ -14,7 +14,13 @@
         actuel: {{control?.errors?.['maxlength']?.actualLength}} - 
         max-required: {{control?.errors?.['maxlength']?.requiredLength}}
     </div>
+    <div *ngIf="isRegex()" class="colorRed">
+        regex'e uymadi
+    </div>
 
     <!-- {{control.errors | json}} -->
 
 </div>
+
+
+<!-- <button (click)="setValue()">button</button> -->

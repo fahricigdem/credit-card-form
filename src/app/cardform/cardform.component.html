@@ -3,6 +3,7 @@
     <app-input [control]="cardNumber" [label]="'cardNumber'"></app-input>
     <app-input [control]="lastDate" [label]="'lastDate'"></app-input>
     <app-input [control]="securityNumber" [label]="'securityNumber'"></app-input>
+    <button type="button" (click)="cardForm.reset()" >Reset</button>
     <button type="submit" [disabled]="cardForm.invalid">Submit</button>
 
 </form>
