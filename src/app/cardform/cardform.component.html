@@ -1,22 +1,22 @@
-<form [formGroup]="cardForm">
-    <input type="text" formControlName="name" />
-    <div *ngIf="name?.errors?.['required'] == true && name?.touched">
-        zorunlu alan
-    </div>
-    <div *ngIf="name?.errors?.['minlength'] != null && name?.touched">
-        actuel: {{name?.errors?.['minlength'].actualLength}} - 
-        min-required: {{name?.errors?.['minlength'].requiredLength}}
-    </div>
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
+    <app-input [control]="name" [label]="'Name'"></app-input>
+    <app-input [control]="cardNumber" [label]="'cardNumber'"></app-input>
+    <app-input [control]="lastDate" [label]="'lastDate'"></app-input>
+    <app-input [control]="securityNumber" [label]="'securityNumber'"></app-input>
+    <button type="submit" [disabled]="cardForm.invalid">Submit</button>
+
 </form>
 
 <div class="mt-4">Form Content</div>
 <p>cardForm.value: {{cardForm.value | json}}</p>
 <p>cardForm.value.name: {{cardForm.value.name}}</p>
 <p>cardForm.valid: {{cardForm.valid | json}}</p>  
-<p>errors: {{name?.errors | json}}</p>  
+
+
+<!-- <p>errors: {{name?.errors | json}}</p>  
 <p>errors - required: {{name?.errors?.['required'] | json}}</p>  
 <p>errors - minlength: {{name?.errors?.['minlength'] | json}}</p>  
 <p>errors - minlength - requiredLength: {{name?.errors?.['minlength'].requiredLength}}</p>  
 <p>errors - minlength - actualLength: {{name?.errors?.['minlength'].actualLength}}</p>  
 <p>touched: {{name?.touched}}</p>
-<p>dirty: {{name?.dirty}}</p>
+<p>dirty: {{name?.dirty}}</p> -->

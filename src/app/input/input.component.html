@@ -1,0 +1,20 @@
+<div class="p-3">
+    
+    <label>{{label}} </label>
+    <input type="text" [formControl]="control" [ngClass]="{'borderRed': isRequired()}" />
+
+    <div *ngIf="isRequired()" class="colorRed">
+        zorunlu alan
+    </div>
+    <div *ngIf="isMinLength()" class="colorRed">
+        actuel: {{control?.errors?.['minlength']?.actualLength}} - 
+        min-required: {{control?.errors?.['minlength']?.requiredLength}}
+    </div>
+    <div *ngIf="isMaxLength()" class="colorRed">
+        actuel: {{control?.errors?.['maxlength']?.actualLength}} - 
+        max-required: {{control?.errors?.['maxlength']?.requiredLength}}
+    </div>
+
+    <!-- {{control.errors | json}} -->
+
+</div>
