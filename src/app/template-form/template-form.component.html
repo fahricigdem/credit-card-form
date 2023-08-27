@@ -1,1 +1,19 @@
 <h1>Template-Driven Form</h1>
+
+<form #eMailForm="ngForm" (ngSubmit)="onSubmit()">
+    <input  [(ngModel)]="eMail" name="eMail" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #eMailControl="ngModel"/>
+    <div *ngIf="eMailControl?.errors?.required && eMailControl.touched" style="color:red;">required field!</div>
+    <div *ngIf="eMailControl?.errors?.pattern && eMailControl.touched" style="color:red;">wrong format!</div>
+    <button [disabled]="!eMailControl.valid" >submit</button>
+</form>
+<!-- <p>email: {{eMail}} </p> -->
+<br>
+<p>eMailForm.value: {{eMailForm.value | json}}</p>
+<p>eMailForm.valid: {{eMailForm.valid | json}}</p>
+<p>eMailForm.touched: {{eMailForm.touched | json}}</p>
+<br>
+<p>eMailControl.touched: {{eMailControl.touched | json}}</p>
+<p>error-required: {{eMailControl?.errors?.required | json}}</p>
+<p>errors-pattern: {{eMailControl?.errors?.pattern | json}}</p>
+<!-- <p>errors: {{eMailControl.errors}}</p> -->
+

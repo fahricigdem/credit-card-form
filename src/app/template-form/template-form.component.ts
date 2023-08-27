@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./template-form.component.css']
 })
 export class TemplateFormComponent {
-
+  eMail:string="";
+  onSubmit(){
+    console.log("submitted");
+    this.eMail="";
+  }
 }
